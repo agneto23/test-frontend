@@ -1,0 +1,22 @@
+<h2>List Pokemon</h2>
+
+<div class="container">
+  <app-pokemon-search [pokemonResults]="pokemonResults" (pokemonFilter)="filter($event)"></app-pokemon-search>
+</div>
+
+<div class="container">
+  <div *ngFor="let p of pokemon.results; let i=index;" (click)="getDetail(p.url)">
+    <div>{{i+1}}</div>
+    <div>{{p.name}}</div>
+  </div>
+</div>
+
+<div class="container" *ngIf="pokemonDetail">
+  <app-pokemon-detail [pokemonDetail]="pokemonDetail"></app-pokemon-detail>
+</div>
+
+<div class="button-orientation">
+  <button *ngIf="pokemon.previous" (click)="isNext(false)">Atras</button>
+  <button *ngIf="pokemon.next" (click)="isNext(true)">Siguiente</button>
+</div>
+
